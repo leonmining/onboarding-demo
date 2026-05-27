@@ -10,6 +10,8 @@ import {
   Activity,
   HeartPulse,
 } from "lucide-react";
+import MedicalHeroGraphic from "@/components/MedicalHeroGraphic";
+import MedicalPattern from "@/components/MedicalPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -68,36 +70,41 @@ export default function Home() {
           <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--color-primary)] rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-20 w-96 h-96 bg-[var(--color-primary)] rounded-full blur-3xl" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-sm mb-6">
-              <Shield className="w-4 h-4 text-[var(--color-primary)]" />
-              Onderdeel van Havenstad Gerechtsdeurwaarders
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-sm mb-6">
+                <Shield className="w-4 h-4 text-[var(--color-primary)]" />
+                Onderdeel van Havenstad Gerechtsdeurwaarders
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                Openstaande facturen in uw praktijk?{" "}
+                <span className="text-[var(--color-primary)]">MediCollect regelt het.</span>
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl">
+                U heeft uw patient de best mogelijke zorg gegeven. Maar de factuur
+                blijft onbetaald. MediCollect neemt het incassoproces uit handen,
+                professioneel, discreet en met respect voor uw patientrelatie.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[var(--color-primary)] text-white font-semibold rounded-lg hover:bg-[var(--color-primary-dark)] transition-colors"
+                >
+                  <Phone className="w-5 h-5" />
+                  Neem contact op
+                </Link>
+                <Link
+                  href="/werkwijze"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors"
+                >
+                  Bekijk onze werkwijze
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Openstaande facturen in uw praktijk?{" "}
-              <span className="text-[var(--color-primary)]">MediCollect regelt het.</span>
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl">
-              U heeft uw patient de best mogelijke zorg gegeven. Maar de factuur
-              blijft onbetaald. MediCollect neemt het incassoproces uit handen,
-              professioneel, discreet en met respect voor uw patientrelatie.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[var(--color-primary)] text-white font-semibold rounded-lg hover:bg-[var(--color-primary-dark)] transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-                Neem contact op
-              </Link>
-              <Link
-                href="/werkwijze"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors"
-              >
-                Bekijk onze werkwijze
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+            <div className="hidden lg:block">
+              <MedicalHeroGraphic />
             </div>
           </div>
         </div>
@@ -105,33 +112,60 @@ export default function Home() {
 
       {/* Stats */}
       <section className="bg-white border-b border-[var(--color-border)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-3xl sm:text-4xl font-bold text-[var(--color-primary)]">3-8%</div>
-              <p className="text-sm text-[var(--color-text-light)] mt-1">
-                gemiddelde omzet die zorgpraktijken mislopen
-              </p>
-            </div>
-            <div>
-              <div className="text-3xl sm:text-4xl font-bold text-[var(--color-primary)]">5 min</div>
-              <p className="text-sm text-[var(--color-text-light)] mt-1">
-                om een factuur bij ons aan te melden
-              </p>
-            </div>
-            <div>
-              <div className="text-3xl sm:text-4xl font-bold text-[var(--color-primary)]">4-6 wk</div>
-              <p className="text-sm text-[var(--color-text-light)] mt-1">
-                gemiddelde doorlooptijd minnelijk traject
-              </p>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            {[
+              {
+                value: "3-8%",
+                label: "gemiddelde omzet die zorgpraktijken mislopen",
+                icon: (
+                  <svg viewBox="0 0 40 40" className="w-10 h-10" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="#2a9d8f" strokeWidth="2" opacity="0.2" />
+                    <path d="M12 25L18 18L24 22L30 14" stroke="#2a9d8f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M26 14H30V18" stroke="#2a9d8f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                value: "5 min",
+                label: "om een factuur bij ons aan te melden",
+                icon: (
+                  <svg viewBox="0 0 40 40" className="w-10 h-10" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="#2a9d8f" strokeWidth="2" opacity="0.2" />
+                    <circle cx="20" cy="21" r="11" stroke="#2a9d8f" strokeWidth="2" />
+                    <path d="M20 15V21L24 25" stroke="#2a9d8f" strokeWidth="2.5" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+              {
+                value: "4-6 wk",
+                label: "gemiddelde doorlooptijd minnelijk traject",
+                icon: (
+                  <svg viewBox="0 0 40 40" className="w-10 h-10" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="#2a9d8f" strokeWidth="2" opacity="0.2" />
+                    <path d="M14 20L18 24L28 14" stroke="#2a9d8f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+            ].map((stat) => (
+              <div key={stat.value} className="flex items-center gap-4 justify-center sm:justify-start">
+                <div className="shrink-0">{stat.icon}</div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-bold text-[var(--color-primary)]">{stat.value}</div>
+                  <p className="text-sm text-[var(--color-text-light)] mt-0.5">{stat.label}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* USPs */}
-      <section className="bg-[var(--color-bg-alt)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <section className="relative bg-[var(--color-bg-alt)] overflow-hidden">
+        <div className="absolute inset-0 opacity-40 pointer-events-none">
+          <MedicalPattern />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-secondary)] mb-6">
@@ -262,8 +296,12 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[var(--color-accent)]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <section className="relative bg-[var(--color-accent)] overflow-hidden">
+        {/* Heartbeat line decoration */}
+        <svg className="absolute bottom-0 left-0 w-full h-20 opacity-10" viewBox="0 0 1200 80" fill="none" preserveAspectRatio="none">
+          <path d="M0 40 L200 40 L250 40 L280 10 L310 70 L340 5 L370 60 L400 35 L430 40 L1200 40" stroke="#2a9d8f" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-secondary)] mb-4">
             Vrijblijvend kennismaken?
           </h2>
