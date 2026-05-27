@@ -71,15 +71,14 @@ export default function Home() {
           <div className="absolute bottom-10 right-20 w-96 h-96 bg-[var(--color-primary)] rounded-full blur-3xl" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="grid lg:grid-cols-3 gap-12 items-center">
+            <div className="lg:col-span-2">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-sm mb-6">
                 <Shield className="w-4 h-4 text-[var(--color-primary)]" />
                 Onderdeel van Havenstad Gerechtsdeurwaarders
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Openstaande facturen in uw praktijk?{" "}
-                <span className="text-[var(--color-primary)]">MediCollect regelt het.</span>
+                Openstaande facturen in uw praktijk?
               </h1>
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl">
                 U heeft uw patient de best mogelijke zorg gegeven. Maar de factuur
