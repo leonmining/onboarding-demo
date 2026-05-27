@@ -17,6 +17,46 @@ interface BranchePageProps {
   faqs: FAQ[];
 }
 
+function HeroMedicalGraphic({ icon: Icon }: { icon: LucideIcon }) {
+  return (
+    <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full max-w-[280px]">
+      {/* Background circles */}
+      <circle cx="150" cy="150" r="140" fill="white" fillOpacity="0.04" />
+      <circle cx="150" cy="150" r="110" fill="white" fillOpacity="0.04" />
+
+      {/* Shield outline */}
+      <path
+        d="M150 40L80 75V155C80 210 110 255 150 275C190 255 220 210 220 155V75L150 40Z"
+        fill="#2a9d8f"
+        fillOpacity="0.15"
+        stroke="#2a9d8f"
+        strokeWidth="2"
+        opacity="0.5"
+      />
+
+      {/* Central icon circle */}
+      <circle cx="150" cy="140" r="40" fill="#2a9d8f" fillOpacity="0.25" stroke="#2a9d8f" strokeWidth="2" />
+
+      {/* Floating dots */}
+      <circle cx="60" cy="60" r="4" fill="white" fillOpacity="0.2" />
+      <circle cx="240" cy="80" r="3" fill="#2a9d8f" fillOpacity="0.3" />
+      <circle cx="50" cy="200" r="5" fill="white" fillOpacity="0.15" />
+      <circle cx="250" cy="220" r="4" fill="#2a9d8f" fillOpacity="0.2" />
+      <circle cx="90" cy="260" r="3" fill="white" fillOpacity="0.1" />
+
+      {/* Small medical crosses */}
+      <g transform="translate(55, 100)" opacity="0.15">
+        <rect x="-2" y="-8" width="4" height="16" rx="1" fill="white" />
+        <rect x="-8" y="-2" width="16" height="4" rx="1" fill="white" />
+      </g>
+      <g transform="translate(245, 160)" opacity="0.15">
+        <rect x="-2" y="-8" width="4" height="16" rx="1" fill="white" />
+        <rect x="-8" y="-2" width="16" height="4" rx="1" fill="white" />
+      </g>
+    </svg>
+  );
+}
+
 export default function BranchePage({
   icon: Icon,
   title,
@@ -29,16 +69,36 @@ export default function BranchePage({
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-secondary-dark)] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-3xl">
-            <div className="w-14 h-14 rounded-xl bg-[var(--color-primary)] flex items-center justify-center mb-6">
-              <Icon className="w-7 h-7 text-white" />
+      <section className="relative bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-secondary-dark)] text-white overflow-hidden">
+        {/* Heartbeat line top */}
+        <svg className="absolute top-0 left-0 w-full h-16 opacity-10" viewBox="0 0 1200 60" fill="none" preserveAspectRatio="none">
+          <path d="M0 30 L300 30 L350 30 L380 8 L410 52 L440 3 L470 48 L500 25 L530 30 L1200 30" stroke="#2a9d8f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        {/* Glow effects */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-10 right-20 w-64 h-64 bg-[var(--color-primary)] rounded-full blur-3xl" />
+          <div className="absolute bottom-10 left-10 w-48 h-48 bg-[var(--color-primary)] rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid lg:grid-cols-3 gap-10 items-center">
+            <div className="lg:col-span-2">
+              <div className="w-14 h-14 rounded-xl bg-[var(--color-primary)] flex items-center justify-center mb-6">
+                <Icon className="w-7 h-7 text-white" />
+              </div>
+              <h1 className="text-4xl sm:text-5xl font-bold mb-6">{title}</h1>
+              <p className="text-lg text-gray-300 leading-relaxed">{heroText}</p>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">{title}</h1>
-            <p className="text-lg text-gray-300 leading-relaxed">{heroText}</p>
+            <div className="hidden lg:flex justify-center">
+              <HeroMedicalGraphic icon={Icon} />
+            </div>
           </div>
         </div>
+
+        {/* Heartbeat line bottom */}
+        <svg className="absolute bottom-0 left-0 w-full h-16 opacity-10" viewBox="0 0 1200 60" fill="none" preserveAspectRatio="none">
+          <path d="M0 30 L500 30 L550 30 L580 8 L610 52 L640 3 L670 48 L700 25 L730 30 L1200 30" stroke="#2a9d8f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </section>
 
       {/* Content */}
@@ -119,8 +179,12 @@ export default function BranchePage({
       </section>
 
       {/* CTA */}
-      <section className="bg-[var(--color-accent)]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+      <section className="relative bg-[var(--color-accent)] overflow-hidden">
+        {/* Heartbeat line decoration */}
+        <svg className="absolute bottom-0 left-0 w-full h-20 opacity-10" viewBox="0 0 1200 80" fill="none" preserveAspectRatio="none">
+          <path d="M0 40 L200 40 L250 40 L280 10 L310 70 L340 5 L370 60 L400 35 L430 40 L1200 40" stroke="#2a9d8f" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-2xl font-bold text-[var(--color-secondary)] mb-4">
             Heeft u openstaande facturen?
           </h2>
