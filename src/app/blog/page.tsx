@@ -43,13 +43,13 @@ export default function BlogPage() {
 
       {/* Articles */}
       <section className="bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="space-y-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid sm:grid-cols-2 gap-6">
             {articles.map((article) => (
               <Link
                 key={article.href}
                 href={article.href}
-                className="group block bg-[var(--color-bg-alt)] rounded-2xl p-8 border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:shadow-lg transition-all"
+                className="group flex flex-col bg-[var(--color-bg-alt)] rounded-2xl p-8 border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:shadow-lg transition-all"
               >
                 <div className="flex items-center gap-2 text-sm text-[var(--color-text-light)] mb-3">
                   <Calendar className="w-4 h-4" />
@@ -62,7 +62,7 @@ export default function BlogPage() {
                 <h2 className="text-xl font-bold text-[var(--color-secondary)] mb-3 group-hover:text-[var(--color-primary)] transition-colors">
                   {article.title}
                 </h2>
-                <p className="text-[var(--color-text-light)] mb-4">{article.excerpt}</p>
+                <p className="text-[var(--color-text-light)] mb-4 flex-1">{article.excerpt}</p>
                 <span className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-primary)]">
                   Lees meer <ArrowRight className="w-4 h-4" />
                 </span>
