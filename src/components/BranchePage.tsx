@@ -66,8 +66,29 @@ export default function BranchePage({
   bullets,
   faqs,
 }: BranchePageProps) {
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: title,
+    description: heroText,
+    serviceType: "Incasso",
+    areaServed: "NL",
+    provider: {
+      "@type": "Organization",
+      name: "MediCollect",
+      url: "https://medicollect.nl",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-[var(--color-secondary)] to-[var(--color-secondary-dark)] text-white overflow-hidden">
         {/* Heartbeat line top */}
